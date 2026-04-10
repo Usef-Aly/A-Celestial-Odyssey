@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-display: sans-serif;
+  --color-obsidian: #050505;
+  --color-earth-blue: #3b82f6;
+  --color-moon-silver: #e5e7eb;
+}
+
+@layer base {
+  body {
+    @apply bg-obsidian text-moon-silver font-sans selection:bg-earth-blue/30;
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 10px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+
+  [dir="rtl"] {
+    text-align: right;
+  }
+}
+
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ui-overlay {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/20;
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.nuqat-twinkle {
+  display: inline-block;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px #fff); }
+  50% { opacity: 0.5; filter: drop-shadow(0 0 8px #3b82f6); }
+}
+
+.floating-text {
+  transition: transform 0.1s ease-out;
+}
